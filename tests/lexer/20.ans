@@ -1,0 +1,14 @@
+1	1	keyword	int	int
+1	5	identifier	foo	foo
+1	8	punctuator	(	left_brace
+1	9	keyword	const	const
+1	15	keyword	double	double
+1	22	identifier	a	a
+1	23	punctuator	)	right_brace
+1	25	punctuator	{	left_curlybrace
+2	5	keyword	return	return
+2	12	identifier	a	a
+2	14	punctuator	+	plus
+2	16	real	.5	0.5
+2	18	punctuator	;	semicolon
+3	1	punctuator	}	right_curlybrace

@@ -1,0 +1,126 @@
+DiGraph Syn {
+  rankdir = BT
+  node [shape = box]
+
+  subgraph clusterSymbols {
+  subgraph {
+    rank = same
+    Symbol [shape=record, label = "{ Symbol | name }"]
+    SymTable
+  }
+
+  subgraph clusterBase {
+    SymVar [style = filled, fillcolor = green]
+    SymType [style = filled, fillcolor = lightblue]
+    SymProc
+    SymFunc
+  }
+
+  subgraph clusterTypes {
+    node [style = filled, fillcolor = lightblue]
+    SymTypeScalar
+    SymTypeArray [shape=record, label = "{ SymTypeArray | elemType: SymType\llength: Integer\l }"]
+    SymTypeRecord
+    SymTypeAlias[shape=record, label = "{ SymTypeAlias,\nSymTypePointer | refType: SymType\l }"]
+    subgraph {
+      SymTypeInteger
+      SymTypeFloat
+    }
+  }
+
+  subgraph clusterVars {
+    node [style = filled, fillcolor = green]
+    SymVarGlobal
+    SymVarConst
+    SymVarLocal
+    SymVarParam
+  }
+
+  edge [arrowhead = onormal]
+  SymVar -> Symbol
+  SymType -> Symbol
+  SymProc -> Symbol
+  SymFunc -> SymProc
+  SymTypeScalar -> SymType
+  SymTypeArray -> SymType
+  SymTypeRecord -> SymType
+  SymTypeAlias -> SymType
+  SymTypeInteger -> SymTypeScalar
+  SymTypeFloat -> SymTypeScalar
+  SymVarGlobal -> SymVar
+  SymVarLocal -> SymVar
+  SymVarParam -> SymVar
+  SymVarConst -> SymVar
+  
+  edge [arrowhead = none]
+  SymProc -> SymTable [label = "args,\nlocals", arrowtail = diamond]
+  SymTypeRecord -> SymTable [label = "fields", arrowtail = diamond]
+
+  edge [arrowhead = diamond]
+  Symbol -> SymTable [taillabel = "*"]
+  SymTable -> SymTableStack [taillabel = "*"]
+
+  edge [arrowhead = open]
+  SymVar -> SymType [label = "type"]
+
+  edge [style = invis]
+  SymTypeAlias -> SymTypeArray
+  SymTypeAlias -> SymTypeRecord
+  SymVarGlobal -> SymVarConst
+  SymVarLocal -> SymVarParam
+  }
+
+  subgraph clusterSyntax {
+  subgraph {
+    SyntaxNode [width = 2]
+  }
+
+  subgraph {
+    NodeCall
+    NodeVar
+    NodeRecordAccess
+    subgraph clusterOp {
+      NodeBinaryOp [shape=record, label = "{ NodeBinaryOp | opname }"]
+      NodeUnaryOp [shape=record, label = "{ NodeUnaryOp | opname }"]
+      NodeAssignOp
+    }
+  }
+
+  edge [arrowhead = onormal]
+  NodeRecordAccess -> SyntaxNode
+  NodeAssignOp -> NodeBinaryOp
+  NodeBinaryOp -> SyntaxNode
+  NodeUnaryOp -> SyntaxNode
+  NodeCall -> SyntaxNode
+  NodeVar -> SyntaxNode:w
+  
+  edge [arrowhead = open]
+  NodeRecordAccess -> SyntaxNode [label = "left"]
+  NodeRecordAccess -> SymVar [label = "right"]
+  NodeBinaryOp -> SyntaxNode [label = "left"]
+  NodeBinaryOp -> SyntaxNode [label = "right"]
+  NodeUnaryOp -> SyntaxNode:e [label = "arg"]
+  NodeCall -> SyntaxNode [headlabel = "*", label = "args"]
+  NodeCall -> SymFunc
+  NodeVar -> SymVar
+
+  edge [style = invis]
+  NodeUnaryOp -> NodeBinaryOp
+  NodeRecordAccess -> NodeVar
+  }
+
+  subgraph clusterStatements {
+  style = invis
+  Parser
+  NodeStatement
+  StmtAssign
+  edge [arrowhead = onormal]
+  NodeStatement -> SyntaxNode
+  StmtAssign -> NodeStatement
+  edge [arrowhead = open]
+  Parser -> NodeStatement
+  Parser -> SymTable
+  StmtAssign -> SyntaxNode [label = "left,\nright"]
+  SyntaxNode -> Parser [style = invis, weight = 2]
+  }
+}

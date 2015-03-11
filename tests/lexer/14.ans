@@ -1,0 +1,7 @@
+1	1	keyword	char	char
+1	5	punctuator	*	asterisk
+1	7	identifier	test_str	test_str
+1	16	punctuator	=	assign
+1	28	string	"TESTtest\n000"	TESTtest
+000
+1	43	punctuator	;	semicolon

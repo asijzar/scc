@@ -1,0 +1,14 @@
+1	1	keyword	struct	struct
+1	8	identifier	a	a
+1	10	punctuator	{	left_curlybrace
+2	5	keyword	int	int
+2	9	identifier	f	f
+2	10	punctuator	;	semicolon
+3	5	keyword	int	int
+3	9	identifier	s	s
+3	10	punctuator	;	semicolon
+4	5	keyword	char	char
+4	10	identifier	str	str
+4	13	punctuator	;	semicolon
+5	1	punctuator	}	right_curlybrace
+5	2	punctuator	;	semicolon

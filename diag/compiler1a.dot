@@ -1,0 +1,30 @@
+DiGraph Syn {
+  rankdir = BT
+  concentrate = true
+
+  node [shape = box]
+
+  subgraph {
+    SyntaxNode [width = 2]
+  }
+
+  subgraph {
+    NodeBinaryOp [shape=record, label = "{ NodeBinaryOp | opname\lleft, right: SyntaxNode\l }"]
+    NodeUnaryOp [shape=record, label = "{ NodeUnaryOp | opname\larg: SyntaxNode\l }"]
+    NodeCall [shape=record, label = "{ NodeCall | name\largs: SyntaxNode*\l }"]
+    NodeVar [shape=record, label = "{ NodeVar | name\l\l }"]
+  }
+
+  subgraph {
+    NodeRecordAccess
+    NodeAssignOp
+  }
+
+  edge [arrowhead = onormal]
+  NodeRecordAccess -> NodeBinaryOp
+  NodeAssignOp -> NodeBinaryOp
+  NodeBinaryOp -> SyntaxNode
+  NodeUnaryOp -> SyntaxNode
+  NodeCall -> SyntaxNode
+  NodeVar -> SyntaxNode
+}

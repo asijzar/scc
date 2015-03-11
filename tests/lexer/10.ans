@@ -1,0 +1,5 @@
+1	1	keyword	int	int
+1	5	identifier	a	a
+1	7	punctuator	=	assign
+1	9	integer	0	0
+1	10	punctuator	;	semicolon

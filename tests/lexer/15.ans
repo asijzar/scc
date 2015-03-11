@@ -1,0 +1,17 @@
+1	1	keyword	char	char
+1	6	identifier	a	a
+1	8	punctuator	=	assign
+1	10	char	'\t'		
+1	14	punctuator	;	semicolon
+2	1	keyword	if	if
+2	4	punctuator	(	left_brace
+2	5	identifier	a	a
+2	7	punctuator	!=	not_eq
+2	10	char	'\n'	
+
+2	14	punctuator	)	right_brace
+3	5	identifier	a	a
+3	7	punctuator	=	assign
+3	9	char	'\n'	
+
+3	13	punctuator	;	semicolon

@@ -1,0 +1,38 @@
+﻿Build started 3/11/2015 8:26:01 AM.
+     1>Project "C:\Programing\dev\New folder\scc\proj\scc.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt ..\flags.cpp ..\lexer\lexer.cpp ..\lexer\lexer_error.cpp ..\main.cpp ..\token.cpp
+         token.cpp
+         main.cpp
+         lexer_error.cpp
+         lexer.cpp
+         flags.cpp
+     1>c:\programing\dev\new folder\scc\flags.cpp(10): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\utility(144): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+                 c:\programing\dev\new folder\scc\flags.cpp(11) : see reference to function template instantiation 'std::pair<std::string,bool>::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,int,void>(_Other1,_Other2 &&)' being compiled
+                 with
+                 [
+                     _Other1=std::basic_string<char,std::char_traits<char>,std::allocator<char>> &
+         ,            _Other2=int
+                 ]
+                 c:\programing\dev\new folder\scc\flags.cpp(11) : see reference to function template instantiation 'std::pair<std::string,bool>::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char>>&,int,void>(_Other1,_Other2 &&)' being compiled
+                 with
+                 [
+                     _Other1=std::basic_string<char,std::char_traits<char>,std::allocator<char>> &
+         ,            _Other2=int
+                 ]
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Programing\dev\New folder\scc\proj\Debug\scc.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Programing\dev\New folder\scc\proj\Debug\scc.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Programing\dev\New folder\scc\proj\Debug\scc.lib" /MACHINE:X86 Debug\flags.obj
+         Debug\lexer.obj
+         Debug\lexer_error.obj
+         Debug\main.obj
+         Debug\token.obj
+         scc.vcxproj -> C:\Programing\dev\New folder\scc\proj\Debug\scc.exe
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Programing\dev\New folder\scc\proj\Debug\scc.bsc" /n Debug\flags.sbr Debug\lexer.sbr Debug\lexer_error.sbr Debug\main.sbr Debug\token.sbr
+     1>Done Building Project "C:\Programing\dev\New folder\scc\proj\scc.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.32

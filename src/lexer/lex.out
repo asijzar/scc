@@ -1,0 +1,6 @@
+1:1: error: invalid suffix on integer constant '0Z'
+2:1: error: invalid suffix on integer constant '0z'
+3:1: error: invalid suffix on integer constant '004A'
+4:1: error: invalid suffix on integer constant '005a'
+6:1: error: invalid suffix on integer constant '0xJ'
+7:1: error: invalid suffix on integer constant '0XJ'

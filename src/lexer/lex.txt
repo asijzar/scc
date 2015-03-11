@@ -1,0 +1,65 @@
+keyword
+identifier
+integer
+real
+char
+string
+punctuator
+curlybraceL {
+curlybraceR }
+semicolon ;
+comma  ,
+braceL  (
+braceR  )
+ternaryQ ?
+ternaryC :
+squarebraceL [
+squarebraceR ]
+
+xor  ^
+xorEq  ^=
+сднамн
+asterisk *
+asteriskEq *=
+
+notB  ~
+not  !
+notEq  !=
+
+assign  =
+eq  ==
+
+mod  %
+modEq  %=
+
+orB  |
+or  ||
+orBEq  |=
+
+andB  &
+and  &&
+andBEq  &=
+
+plus  +
+increment ++
+plusEq  +=
+
+minus  -
+fieldPtr ->
+decrement --
+minusEq  -=
+
+less  <
+shiftL  <<
+lessEq  <=
+shiftLEq <<=
+
+greater  >
+shiftR  >>
+greaterEq >=
+shiftREq >>=
+
+div  /
+divEq  /=
+
+field  .

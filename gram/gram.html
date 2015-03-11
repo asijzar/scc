@@ -1,0 +1,260 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:bgf="http://planet-sl.org/bgf" xmlns:xbgf="http://planet-sl.org/xbgf" xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Browsable ISO C99 Grammar</title><link href="style.css" rel="stylesheet" type="text/css"></link><script type="text/javascript">
+</script></head><body><h1 class="l">SCC Grammar</h1><p>Created by <strong>Kostin Dmitry</strong>
+<h2 class="l">Summary</h2>
+<ul><li>Number of production rules: <strong>69</strong></li>
+<li>Number of top alternatives: <strong>201</strong></li>
+<li>Number of defined nonterminal symbols: <strong>69</strong></li>
+<li>Root nonterminal symbols: —</li>
+<li>Other top nonterminal symbols: <strong>1</strong>: <code><a href="#translation-unit" class="nt">translation-unit</a></code></li>
+<li>Bottom nonterminal symbols: <strong>3</strong>: 
+<code><a href="#identifier" class="nt">identifier</a>, 
+<a href="#constant" class="nt">constant</a>, 
+<a href="#string-literal" class="nt">string-literal</a></code></li>
+<li>Number of used terminal symbols: <strong>82</strong></li>
+<li>Special terminal symbols: <strong>45</strong>: <code class="t">"{", "}", ";", ",", ":", "*", "(", ")",
+ "[", "]", "?", "||", "&amp;&amp;", "|", "^", "&amp;", "==", "!=", "&lt;", "&gt;", "&lt;=", "&gt;=", "&lt;&lt;", 
+ "&gt;&gt;", "+", "-", "/", "%", "++", "--", ".", "...", -&gt;", "=", "~", "!", "*=", "/=", "%=", "+=", "-=", "&lt;&lt;=", 
+ "&gt;&gt;=", "&amp;=", "^=", "|="</code></li>
+ <li>Keywords: <strong>16</strong>: <code class="t">"typedef", "void", "char", "int", "double", "struct", "const", 
+ "sizeof", "if", "else", "while", "for", "sizeof", "continue", "break", "return"</code></li></ul>
+ <h2 class="l">Syntax</h2>
+<pre><a class="nt" name="translation-unit">translation-unit</a>:
+        <a class="nt" href="#external-declaration">external-declaration</a>
+        <a class="nt" href="#translation-unit">translation-unit</a> <a class="nt" href="#external-declaration">external-declaration</a>
+</pre><pre><a class="nt" name="external-declaration">external-declaration</a>:
+        <a class="nt" href="#function-definition">function-definition</a>
+        <a class="nt" href="#declaration">declaration</a>
+</pre><pre><a class="nt" name="function-definition">function-definition</a>:
+        <a class="nt" href="#declaration-specifiers">declaration-specifiers</a> <a class="nt" href="#declarator">declarator</a> <a class="nt" href="#declaration-list">declaration-list</a><span class="meta">?</span> <a class="nt" href="#compound-statement">compound-statement</a>
+</pre><pre><a class="nt" name="declaration-specifiers">declaration-specifiers</a>:
+        <a class="nt" href="#storage-class-specifier">storage-class-specifier</a> <a class="nt" href="#declaration-specifiers">declaration-specifiers</a><span class="meta">?</span>
+        <a class="nt" href="#type-specifier">type-specifier</a> <a class="nt" href="#declaration-specifiers">declaration-specifiers</a><span class="meta">?</span>
+        <a class="nt" href="#type-qualifier">type-qualifier</a> <a class="nt" href="#declaration-specifiers">declaration-specifiers</a><span class="meta">?</span>
+        <a class="nt" href="#function-specifier">function-specifier</a> <a class="nt" href="#declaration-specifiers">declaration-specifiers</a><span class="meta">?</span>
+</pre><pre><a class="nt" name="storage-class-specifier">storage-class-specifier</a>:
+        <span class="t">"typedef"</span>
+</pre><pre><a class="nt" name="type-specifier">type-specifier</a>:
+        <span class="t">"void"</span>
+        <span class="t">"char"</span>
+        <span class="t">"int"</span>
+        <span class="t">"double"</span>
+        <a class="nt" href="#struct-specifier">struct-specifier</a>
+        <a class="nt" href="#typedef-name">typedef-name</a>
+</pre><pre><a class="nt" name="struct-specifier">struct-specifier</a>:
+        <span class="t">"struct"</span> <a class="nt" href="#identifier">identifier</a><span class="meta">?</span> <span class="t">"{"</span> <a class="nt" href="#struct-declaration-list">struct-declaration-list</a> <span class="t">"}"</span>
+        <span class="t">"struct"</span> <a class="nt" href="#identifier">identifier</a>
+</pre><pre><a class="nt" name="struct-declaration-list">struct-declaration-list</a>:
+        <a class="nt" href="#struct-declaration">struct-declaration</a>
+        <a class="nt" href="#struct-declaration-list">struct-declaration-list</a> <a class="nt" href="#struct-declaration">struct-declaration</a>
+</pre><pre><a class="nt" name="struct-declaration">struct-declaration</a>:
+        <a class="nt" href="#specifier-qualifier-list">specifier-qualifier-list</a> <a class="nt" href="#struct-declarator-list">struct-declarator-list</a> <span class="t">";"</span>
+</pre><pre><a class="nt" name="specifier-qualifier-list">specifier-qualifier-list</a>:
+        <a class="nt" href="#type-specifier">type-specifier</a> <a class="nt" href="#specifier-qualifier-list">specifier-qualifier-list</a><span class="meta">?</span>
+        <a class="nt" href="#type-qualifier">type-qualifier</a> <a class="nt" href="#specifier-qualifier-list">specifier-qualifier-list</a><span class="meta">?</span>
+</pre><pre><a class="nt" name="type-qualifier">type-qualifier</a>:
+        <span class="t">"const"</span>
+</pre><pre><a class="nt" name="struct-declarator-list">struct-declarator-list</a>:
+        <a class="nt" href="#struct-declarator">struct-declarator</a>
+        <a class="nt" href="#struct-declarator-list">struct-declarator-list</a> <span class="t">","</span> <a class="nt" href="#struct-declarator">struct-declarator</a>
+</pre><pre><a class="nt" name="struct-declarator">struct-declarator</a>:
+        <a class="nt" href="#declarator">declarator</a>
+        <a class="nt" href="#declarator">declarator</a><span class="meta">?</span> <span class="t">":"</span> <a class="nt" href="#constant-expression">constant-expression</a>
+</pre><pre><a class="nt" name="declarator">declarator</a>:
+        <a class="nt" href="#pointer">pointer</a><span class="meta">?</span> <a class="nt" href="#direct-declarator">direct-declarator</a>
+</pre><pre><a class="nt" name="pointer">pointer</a>:
+        <span class="t">"*"</span> <a class="nt" href="#type-qualifier-list">type-qualifier-list</a><span class="meta">?</span>
+        <span class="t">"*"</span> <a class="nt" href="#type-qualifier-list">type-qualifier-list</a><span class="meta">?</span> <a class="nt" href="#pointer">pointer</a>
+</pre><pre><a class="nt" name="type-qualifier-list">type-qualifier-list</a>:
+        <a class="nt" href="#type-qualifier">type-qualifier</a>
+        <a class="nt" href="#type-qualifier-list">type-qualifier-list</a> <a class="nt" href="#type-qualifier">type-qualifier</a>
+</pre><pre><a class="nt" name="direct-declarator">direct-declarator</a>:
+        <a class="nt" href="#identifier">identifier</a>
+        <span class="t">"("</span> <a class="nt" href="#declarator">declarator</a> <span class="t">")"</span>
+        <a class="nt" href="#direct-declarator">direct-declarator</a> <span class="t">"["</span> <a class="nt" href="#type-qualifier-list">type-qualifier-list</a><span class="meta">?</span> <a class="nt" href="#assignment-expression">assignment-expression</a><span class="meta">?</span> <span class="t">"]"</span>
+        <a class="nt" href="#direct-declarator">direct-declarator</a> <span class="t">"["</span> <a class="nt" href="#type-qualifier-list">type-qualifier-list</a><span class="meta">?</span> <span class="t">"*"</span> <span class="t">"]"</span>
+        <a class="nt" href="#direct-declarator">direct-declarator</a> <span class="t">"("</span> <a class="nt" href="#parameter-type-list">parameter-type-list</a> <span class="t">")"</span>
+        <a class="nt" href="#direct-declarator">direct-declarator</a> <span class="t">"("</span> <a class="nt" href="#identifier-list">identifier-list</a><span class="meta">?</span> <span class="t">")"</span>
+</pre><pre><a class="nt" name="assignment-expression">assignment-expression</a>:
+        <a class="nt" href="#conditional-expression">conditional-expression</a>
+        <a class="nt" href="#unary-expression">unary-expression</a> <a class="nt" href="#assignment-operator">assignment-operator</a> <a class="nt" href="#assignment-expression">assignment-expression</a>
+</pre><pre><a class="nt" name="conditional-expression">conditional-expression</a>:
+        <a class="nt" href="#logical-OR-expression">logical-OR-expression</a>
+        <a class="nt" href="#logical-OR-expression">logical-OR-expression</a> <span class="t">"?"</span> <a class="nt" href="#expression">expression</a> <span class="t">":"</span> <a class="nt" href="#conditional-expression">conditional-expression</a>
+</pre><pre><a class="nt" name="logical-OR-expression">logical-OR-expression</a>:
+        <a class="nt" href="#logical-AND-expression">logical-AND-expression</a>
+        <a class="nt" href="#logical-OR-expression">logical-OR-expression</a> <span class="t">"||"</span> <a class="nt" href="#logical-AND-expression">logical-AND-expression</a>
+</pre><pre><a class="nt" name="logical-AND-expression">logical-AND-expression</a>:
+        <a class="nt" href="#inclusive-OR-expression">inclusive-OR-expression</a>
+        <a class="nt" href="#logical-AND-expression">logical-AND-expression</a> <span class="t">"&amp;&amp;"</span> <a class="nt" href="#inclusive-OR-expression">inclusive-OR-expression</a>
+</pre><pre><a class="nt" name="inclusive-OR-expression">inclusive-OR-expression</a>:
+        <a class="nt" href="#exclusive-OR-expression">exclusive-OR-expression</a>
+        <a class="nt" href="#inclusive-OR-expression">inclusive-OR-expression</a> <span class="t">"|"</span> <a class="nt" href="#exclusive-OR-expression">exclusive-OR-expression</a>
+</pre><pre><a class="nt" name="exclusive-OR-expression">exclusive-OR-expression</a>:
+        <a class="nt" href="#AND-expression">AND-expression</a>
+        <a class="nt" href="#exclusive-OR-expression">exclusive-OR-expression</a> <span class="t">"^"</span> <a class="nt" href="#AND-expression">AND-expression</a>
+</pre><pre><a class="nt" name="AND-expression">AND-expression</a>:
+        <a class="nt" href="#equality-expression">equality-expression</a>
+        <a class="nt" href="#AND-expression">AND-expression</a> <span class="t">"&amp;"</span> <a class="nt" href="#equality-expression">equality-expression</a>
+</pre><pre><a class="nt" name="equality-expression">equality-expression</a>:
+        <a class="nt" href="#relational-expression">relational-expression</a>
+        <a class="nt" href="#equality-expression">equality-expression</a> <span class="t">"=="</span> <a class="nt" href="#relational-expression">relational-expression</a>
+        <a class="nt" href="#equality-expression">equality-expression</a> <span class="t">"!="</span> <a class="nt" href="#relational-expression">relational-expression</a>
+</pre><pre><a class="nt" name="relational-expression">relational-expression</a>:
+        <a class="nt" href="#shift-expression">shift-expression</a>
+        <a class="nt" href="#relational-expression">relational-expression</a> <span class="t">"&lt;"</span> <a class="nt" href="#shift-expression">shift-expression</a>
+        <a class="nt" href="#relational-expression">relational-expression</a> <span class="t">"&gt;"</span> <a class="nt" href="#shift-expression">shift-expression</a>
+        <a class="nt" href="#relational-expression">relational-expression</a> <span class="t">"&lt;="</span> <a class="nt" href="#shift-expression">shift-expression</a>
+        <a class="nt" href="#relational-expression">relational-expression</a> <span class="t">"&gt;="</span> <a class="nt" href="#shift-expression">shift-expression</a>
+</pre><pre><a class="nt" name="shift-expression">shift-expression</a>:
+        <a class="nt" href="#additive-expression">additive-expression</a>
+        <a class="nt" href="#shift-expression">shift-expression</a> <span class="t">"&lt;&lt;"</span> <a class="nt" href="#additive-expression">additive-expression</a>
+        <a class="nt" href="#shift-expression">shift-expression</a> <span class="t">"&gt;&gt;"</span> <a class="nt" href="#additive-expression">additive-expression</a>
+</pre><pre><a class="nt" name="additive-expression">additive-expression</a>:
+        <a class="nt" href="#multiplicative-expression">multiplicative-expression</a>
+        <a class="nt" href="#additive-expression">additive-expression</a> <span class="t">"+"</span> <a class="nt" href="#multiplicative-expression">multiplicative-expression</a>
+        <a class="nt" href="#additive-expression">additive-expression</a> <span class="t">"-"</span> <a class="nt" href="#multiplicative-expression">multiplicative-expression</a>
+</pre><pre><a class="nt" name="multiplicative-expression">multiplicative-expression</a>:
+        <a class="nt" href="#cast-expression">cast-expression</a>
+        <a class="nt" href="#multiplicative-expression">multiplicative-expression</a> <span class="t">"*"</span> <a class="nt" href="#cast-expression">cast-expression</a>
+        <a class="nt" href="#multiplicative-expression">multiplicative-expression</a> <span class="t">"/"</span> <a class="nt" href="#cast-expression">cast-expression</a>
+        <a class="nt" href="#multiplicative-expression">multiplicative-expression</a> <span class="t">"%"</span> <a class="nt" href="#cast-expression">cast-expression</a>
+</pre><pre><a class="nt" name="cast-expression">cast-expression</a>:
+        <a class="nt" href="#unary-expression">unary-expression</a>
+        <span class="t">"("</span> <a class="nt" href="#type-name">type-name</a> <span class="t">")"</span> <a class="nt" href="#cast-expression">cast-expression</a>
+</pre><pre><a class="nt" name="unary-expression">unary-expression</a>:
+        <a class="nt" href="#postfix-expression">postfix-expression</a>
+        <span class="t">"++"</span> <a class="nt" href="#unary-expression">unary-expression</a>
+        <span class="t">"--"</span> <a class="nt" href="#unary-expression">unary-expression</a>
+        <a class="nt" href="#unary-operator">unary-operator</a> <a class="nt" href="#cast-expression">cast-expression</a>
+        <span class="t">"sizeof"</span> <a class="nt" href="#unary-expression">unary-expression</a>
+        <span class="t">"sizeof"</span> <span class="t">"("</span> <a class="nt" href="#type-name">type-name</a> <span class="t">")"</span>
+</pre><pre><a class="nt" name="postfix-expression">postfix-expression</a>:
+        <a class="nt" href="#primary-expression">primary-expression</a>
+        <a class="nt" href="#postfix-expression">postfix-expression</a> <span class="t">"["</span> <a class="nt" href="#expression">expression</a> <span class="t">"]"</span>
+        <a class="nt" href="#postfix-expression">postfix-expression</a> <span class="t">"("</span> <a class="nt" href="#argument-expression-list">argument-expression-list</a><span class="meta">?</span> <span class="t">")"</span>
+        <a class="nt" href="#postfix-expression">postfix-expression</a> <span class="t">"."</span> <a class="nt" href="#identifier">identifier</a>
+        <a class="nt" href="#postfix-expression">postfix-expression</a> <span class="t">"-&gt;"</span> <a class="nt" href="#identifier">identifier</a>
+        <a class="nt" href="#postfix-expression">postfix-expression</a> <span class="t">"++"</span>
+        <a class="nt" href="#postfix-expression">postfix-expression</a> <span class="t">"--"</span>
+        <span class="t">"("</span> <a class="nt" href="#type-name">type-name</a> <span class="t">")"</span> <span class="t">"{"</span> <a class="nt" href="#initializer-list">initializer-list</a> <span class="t">"}"</span>
+        <span class="t">"("</span> <a class="nt" href="#type-name">type-name</a> <span class="t">")"</span> <span class="t">"{"</span> <a class="nt" href="#initializer-list">initializer-list</a> <span class="t">","</span> <span class="t">"}"</span>
+</pre><pre><a class="nt" name="primary-expression">primary-expression</a>:
+        <a class="nt" href="#identifier">identifier</a>
+        <a class="nt" href="#constant">constant</a>
+        <a class="nt" href="#string-literal">string-literal</a>
+        <span class="t">"("</span> <a class="nt" href="#expression">expression</a> <span class="t">")"</span>
+</pre><pre><a class="nt" name="expression">expression</a>:
+        <a class="nt" href="#assignment-expression">assignment-expression</a>
+        <a class="nt" href="#expression">expression</a> <span class="t">","</span> <a class="nt" href="#assignment-expression">assignment-expression</a>
+</pre><pre><a class="nt" name="argument-expression-list">argument-expression-list</a>:
+        <a class="nt" href="#assignment-expression">assignment-expression</a>
+        <a class="nt" href="#argument-expression-list">argument-expression-list</a> <span class="t">","</span> <a class="nt" href="#assignment-expression">assignment-expression</a>
+</pre><pre><a class="nt" name="type-name">type-name</a>:
+        <a class="nt" href="#specifier-qualifier-list">specifier-qualifier-list</a> <a class="nt" href="#abstract-declarator">abstract-declarator</a><span class="meta">?</span>
+</pre><pre><a class="nt" name="abstract-declarator">abstract-declarator</a>:
+        <a class="nt" href="#pointer">pointer</a>
+        <a class="nt" href="#pointer">pointer</a><span class="meta">?</span> <a class="nt" href="#direct-abstract-declarator">direct-abstract-declarator</a>
+</pre><pre><a class="nt" name="direct-abstract-declarator">direct-abstract-declarator</a>:
+        <span class="t">"("</span> <a class="nt" href="#abstract-declarator">abstract-declarator</a> <span class="t">")"</span>
+        <a class="nt" href="#direct-abstract-declarator">direct-abstract-declarator</a><span class="meta">?</span> <span class="t">"["</span> <a class="nt" href="#type-qualifier-list">type-qualifier-list</a><span class="meta">?</span> <a class="nt" href="#assignment-expression">assignment-expression</a><span class="meta">?</span> <span class="t">"]"</span>
+        <a class="nt" href="#direct-abstract-declarator">direct-abstract-declarator</a><span class="meta">?</span> <span class="t">"["</span> <span class="t">"*"</span> <span class="t">"]"</span>
+        <a class="nt" href="#direct-abstract-declarator">direct-abstract-declarator</a><span class="meta">?</span> <span class="t">"("</span> <a class="nt" href="#parameter-type-list">parameter-type-list</a><span class="meta">?</span> <span class="t">")"</span>
+</pre><pre><a class="nt" name="parameter-type-list">parameter-type-list</a>:
+        <a class="nt" href="#parameter-list">parameter-list</a>
+        <a class="nt" href="#parameter-list">parameter-list</a> <span class="t">","</span> <span class="t">"..."</span>
+</pre><pre><a class="nt" name="parameter-list">parameter-list</a>:
+        <a class="nt" href="#parameter-declaration">parameter-declaration</a>
+        <a class="nt" href="#parameter-list">parameter-list</a> <span class="t">","</span> <a class="nt" href="#parameter-declaration">parameter-declaration</a>
+</pre><pre><a class="nt" name="parameter-declaration">parameter-declaration</a>:
+        <a class="nt" href="#declaration-specifiers">declaration-specifiers</a> <a class="nt" href="#declarator">declarator</a>
+        <a class="nt" href="#declaration-specifiers">declaration-specifiers</a> <a class="nt" href="#abstract-declarator">abstract-declarator</a><span class="meta">?</span>
+</pre><pre><a class="nt" name="initializer-list">initializer-list</a>:
+        <a class="nt" href="#designation">designation</a><span class="meta">?</span> <a class="nt" href="#initializer">initializer</a>
+        <a class="nt" href="#initializer-list">initializer-list</a> <span class="t">","</span> <a class="nt" href="#designation">designation</a><span class="meta">?</span> <a class="nt" href="#initializer">initializer</a>
+</pre><pre><a class="nt" name="designation">designation</a>:
+        <a class="nt" href="#designator-list">designator-list</a> <span class="t">"="</span>
+</pre><pre><a class="nt" name="designator-list">designator-list</a>:
+        <a class="nt" href="#designator">designator</a>
+        <a class="nt" href="#designator-list">designator-list</a> <a class="nt" href="#designator">designator</a>
+</pre><pre><a class="nt" name="designator">designator</a>:
+        <span class="t">"["</span> <a class="nt" href="#constant-expression">constant-expression</a> <span class="t">"]"</span>
+        <span class="t">"."</span> <a class="nt" href="#identifier">identifier</a>
+</pre><pre><a class="nt" name="constant-expression">constant-expression</a>:
+        <a class="nt" href="#conditional-expression">conditional-expression</a>
+</pre><pre><a class="nt" name="initializer">initializer</a>:
+        <a class="nt" href="#assignment-expression">assignment-expression</a>
+        <span class="t">"{"</span> <a class="nt" href="#initializer-list">initializer-list</a> <span class="t">"}"</span>
+        <span class="t">"{"</span> <a class="nt" href="#initializer-list">initializer-list</a> <span class="t">","</span> <span class="t">"}"</span>
+</pre><pre><a class="nt" name="unary-operator">unary-operator</a>:
+        <span class="t">"&amp;"</span>
+        <span class="t">"*"</span>
+        <span class="t">"+"</span>
+        <span class="t">"-"</span>
+        <span class="t">"~"</span>
+        <span class="t">"!"</span>
+</pre><pre><a class="nt" name="assignment-operator">assignment-operator</a>:
+        <span class="t">"="</span>
+        <span class="t">"*="</span>
+        <span class="t">"/="</span>
+        <span class="t">"%="</span>
+        <span class="t">"+="</span>
+        <span class="t">"-="</span>
+        <span class="t">"&lt;&lt;="</span>
+        <span class="t">"&gt;&gt;="</span>
+        <span class="t">"&amp;="</span>
+        <span class="t">"^="</span>
+        <span class="t">"|="</span>
+</pre><pre><a class="nt" name="identifier-list">identifier-list</a>:
+        <a class="nt" href="#identifier">identifier</a>
+        <a class="nt" href="#identifier-list">identifier-list</a> <span class="t">","</span> <a class="nt" href="#identifier">identifier</a>
+</pre><pre><a class="nt" name="typedef-name">typedef-name</a>:
+        <a class="nt" href="#identifier">identifier</a>
+</pre><pre><a class="nt" name="function-specifier">function-specifier</a>:
+        <span class="t">"inline"</span>
+</pre><pre><a class="nt" name="declaration-list">declaration-list</a>:
+        <a class="nt" href="#declaration">declaration</a>
+        <a class="nt" href="#declaration-list">declaration-list</a> <a class="nt" href="#declaration">declaration</a>
+</pre><pre><a class="nt" name="declaration">declaration</a>:
+        <a class="nt" href="#declaration-specifiers">declaration-specifiers</a> <a class="nt" href="#init-declarator-list">init-declarator-list</a><span class="meta">?</span> <span class="t">";"</span>
+</pre><pre><a class="nt" name="init-declarator-list">init-declarator-list</a>:
+        <a class="nt" href="#init-declarator">init-declarator</a>
+        <a class="nt" href="#init-declarator-list">init-declarator-list</a> <span class="t">","</span> <a class="nt" href="#init-declarator">init-declarator</a>
+</pre><pre><a class="nt" name="init-declarator">init-declarator</a>:
+        <a class="nt" href="#declarator">declarator</a>
+        <a class="nt" href="#declarator">declarator</a> <span class="t">"="</span> <a class="nt" href="#initializer">initializer</a>
+</pre><pre><a class="nt" name="compound-statement">compound-statement</a>:
+        <span class="t">"{"</span> <a class="nt" href="#block-item-list">block-item-list</a><span class="meta">?</span> <span class="t">"}"</span>
+</pre><pre><a class="nt" name="block-item-list">block-item-list</a>:
+        <a class="nt" href="#block-item">block-item</a>
+        <a class="nt" href="#block-item-list">block-item-list</a> <a class="nt" href="#block-item">block-item</a>
+</pre><pre><a class="nt" name="block-item">block-item</a>:
+        <a class="nt" href="#declaration">declaration</a>
+        <a class="nt" href="#statement">statement</a>
+</pre><pre><a class="nt" name="statement">statement</a>:
+        <a class="nt" href="#labeled-statement">labeled-statement</a>
+        <a class="nt" href="#compound-statement">compound-statement</a>
+        <a class="nt" href="#expression-statement">expression-statement</a>
+        <a class="nt" href="#selection-statement">selection-statement</a>
+        <a class="nt" href="#iteration-statement">iteration-statement</a>
+        <a class="nt" href="#jump-statement">jump-statement</a>
+</pre><pre><a class="nt" name="labeled-statement">labeled-statement</a>:
+        <a class="nt" href="#identifier">identifier</a> <span class="t">":"</span> <a class="nt" href="#statement">statement</a>
+</pre><pre><a class="nt" name="expression-statement">expression-statement</a>:
+        <a class="nt" href="#expression">expression</a><span class="meta">?</span> <span class="t">";"</span>
+</pre><pre><a class="nt" name="selection-statement">selection-statement</a>:
+        <span class="t">"if"</span> <span class="t">"("</span> <a class="nt" href="#expression">expression</a> <span class="t">")"</span> <a class="nt" href="#statement">statement</a>
+        <span class="t">"if"</span> <span class="t">"("</span> <a class="nt" href="#expression">expression</a> <span class="t">")"</span> <a class="nt" href="#statement">statement</a> <span class="t">"else"</span> <a class="nt" href="#statement">statement</a>
+</pre><pre><a class="nt" name="iteration-statement">iteration-statement</a>:
+        <span class="t">"while"</span> <span class="t">"("</span> <a class="nt" href="#expression">expression</a> <span class="t">")"</span> <a class="nt" href="#statement">statement</a>
+        <span class="t">"for"</span> <span class="t">"("</span> <a class="nt" href="#expression">expression</a><span class="meta">?</span> <span class="t">";"</span> <a class="nt" href="#expression">expression</a><span class="meta">?</span> <span class="t">";"</span> <a class="nt" href="#expression">expression</a><span class="meta">?</span> <span class="t">")"</span> <a class="nt" href="#statement">statement</a>
+        <span class="t">"for"</span> <span class="t">"("</span> <a class="nt" href="#declaration">declaration</a> <a class="nt" href="#expression">expression</a><span class="meta">?</span> <span class="t">";"</span> <a class="nt" href="#expression">expression</a><span class="meta">?</span> <span class="t">")"</span> <a class="nt" href="#statement">statement</a>
+</pre><pre><a class="nt" name="jump-statement">jump-statement</a>:
+        <span class="t">"continue"</span> <span class="t">";"</span>
+        <span class="t">"break"</span> <span class="t">";"</span>
+        <span class="t">"return"</span> <a class="nt" href="#expression">expression</a><span class="meta">?</span> <span class="t">";"</span>
+</pre>
+</body>
+</html>

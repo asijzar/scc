@@ -1,0 +1,16 @@
+1	1	keyword	for	for
+1	5	punctuator	(	left_brace
+1	6	keyword	int	int
+1	10	identifier	i	i
+1	12	punctuator	=	assign
+1	14	integer	0	0
+1	15	punctuator	;	semicolon
+1	17	identifier	i	i
+1	19	punctuator	<	less
+1	21	integer	10e1	100
+1	25	punctuator	;	semicolon
+1	27	identifier	i	i
+1	28	punctuator	++	increment
+1	30	punctuator	)	right_brace
+1	32	punctuator	{	left_curlybrace
+1	33	punctuator	}	right_curlybrace

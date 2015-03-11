@@ -1,0 +1,15 @@
+1	1	keyword	char	char
+1	6	identifier	a	a
+1	8	punctuator	=	assign
+1	10	char	'\t'		
+1	14	punctuator	;	semicolon
+2	1	keyword	while	while
+2	7	punctuator	(	left_brace
+2	8	identifier	a	a
+2	10	punctuator	!=	not_eq
+2	13	char	'\n'	
+
+2	17	punctuator	)	right_brace
+3	5	identifier	a	a
+3	6	punctuator	++	increment
+3	8	punctuator	;	semicolon

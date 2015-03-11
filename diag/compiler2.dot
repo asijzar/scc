@@ -1,0 +1,71 @@
+DiGraph Symbols {
+  rankdir = BT
+  dir = both
+
+  node [shape = box]
+
+  subgraph {
+    rank = same
+    Symbol [shape=record, label = "{ Symbol | name }"]
+    SymTable
+  }
+
+  subgraph clusterBase {
+    SymVar [style = filled, fillcolor = green]
+    SymType [style = filled, fillcolor = lightblue]
+    SymProc
+    SymFunc
+  }
+
+  subgraph clusterTypes {
+    node [style = filled, fillcolor = lightblue]
+    SymTypeScalar
+    SymTypeArray [shape=record, label = "{ SymTypeArray | elemType: SymType\llength: Integer\l }"]
+    SymTypeRecord
+    SymTypeAlias[shape=record, label = "{ SymTypeAlias,\nSymTypePointer | refType: SymType\l }"]
+    subgraph {
+      SymTypeInteger
+      SymTypeFloat
+    }
+  }
+
+  subgraph clusterVars {
+    node [style = filled, fillcolor = green]
+    SymVarGlobal
+    SymVarConst
+    SymVarLocal
+    SymVarParam
+  }
+
+  edge [arrowhead = onormal]
+  SymVar -> Symbol
+  SymType -> Symbol
+  SymProc -> Symbol
+  SymFunc -> SymProc
+  SymTypeScalar -> SymType
+  SymTypeArray -> SymType
+  SymTypeRecord -> SymType
+  SymTypeAlias -> SymType
+  SymTypeInteger -> SymTypeScalar
+  SymTypeFloat -> SymTypeScalar
+  SymVarGlobal -> SymVar
+  SymVarLocal -> SymVar
+  SymVarParam -> SymVar
+  SymVarConst -> SymVar
+  
+  edge [arrowtail = diamond, arrowhead = none]
+  SymProc -> SymTable [label = "args,\nlocals"]
+  SymTypeRecord -> SymTable [label = "fields"]
+
+  edge [arrowhead = diamond]
+  Symbol -> SymTable [taillabel = "*"]
+
+  edge [arrowhead = open]
+  SymVar -> SymType [label = "type"]
+
+  edge [style = invis]
+  SymTypeAlias -> SymTypeArray
+  SymTypeAlias -> SymTypeRecord
+  SymVarGlobal -> SymVarConst
+  SymVarLocal -> SymVarParam
+}

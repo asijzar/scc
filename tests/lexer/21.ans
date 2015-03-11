@@ -1,0 +1,15 @@
+1	1	keyword	break	break
+2	1	keyword	char	char
+3	1	keyword	const	const
+4	1	keyword	continue	continue
+5	1	keyword	double	double
+6	1	keyword	else	else
+7	1	keyword	for	for
+8	1	keyword	if	if
+9	1	keyword	int	int
+10	1	keyword	return	return
+11	1	keyword	sizeof	sizeof
+12	1	keyword	struct	struct
+13	1	keyword	typedef	typedef
+14	1	keyword	void	void
+15	1	keyword	while	while

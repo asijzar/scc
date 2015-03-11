@@ -1,0 +1,4 @@
+1	1	keyword	typedef	typedef
+1	9	keyword	int	int
+1	13	identifier	my_int	my_int
+1	19	punctuator	;	semicolon

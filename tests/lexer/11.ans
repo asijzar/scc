@@ -1,0 +1,5 @@
+1	1	keyword	double	double
+1	8	identifier	a	a
+1	10	punctuator	=	assign
+1	12	real	.686	0.686
+1	16	punctuator	;	semicolon
